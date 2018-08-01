@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.test.grpc.performance";
+//option java_outer_classname = "TestGrpcPerformance";
+
+package com.test.grpc.performance;
+import "google/protobuf/timestamp.proto";
+
+service TestPerformance {
+    rpc SayHello (TestRequest) returns (stream TestReply) {
+    }
+    rpc SayHelloA (TestRequest) returns (stream TestReply) {
+    }
+    rpc SayHelloB (TestRequest) returns (stream TestReply) {
+    }
+    rpc SayHelloC (TestRequest) returns (stream TestReply) {
+    }
+}
+
+
+message TestRequest {
+    string name = 1;
+}
+
+message HeaderReply {
+    repeated LineReply field1 = 1;
+    int32 field2 = 2;
+    google.protobuf.Timestamp field3 = 3;
+    string field4 = 4;
+    int32 field5 = 5;
+    string field6 = 6;
+    int32 field7 = 7;
+    string field8 = 8;
+    int32 field9 = 9;
+    string field10 = 10;
+    int32 field11 = 11;
+    string field12 = 12;
+    int32 field13 = 13;
+    string field14 = 14;
+    int32 field15 = 15;
+    string field16 = 16;
+    int32 field17 = 17;
+    string field18 = 18;
+
+}
+
+message LineReply {
+    repeated DistributionReply field1 = 1;
+    int32 field2 = 2;
+    google.protobuf.Timestamp field3 = 3;
+    string field4 = 4;
+    int32 field5 = 5;
+    string field6 = 6;
+    int32 field7 = 7;
+    string field8 = 8;
+    int32 field9 = 9;
+    string field10 = 10;
+    int32 field11 = 11;
+    string field12 = 12;
+    int32 field13 = 13;
+    string field14 = 14;
+    int32 field15 = 15;
+    string field16 = 16;
+    int32 field17 = 17;
+    string field18 = 18;
+}
+
+message DistributionReply {
+    string field1 = 1;
+    int32 field2 = 2;
+    google.protobuf.Timestamp field3 = 3;
+    string field4 = 4;
+    int32 field5 = 5;
+    string field6 = 6;
+    int32 field7 = 7;
+    string field8 = 8;
+    int32 field9 = 9;
+    string field10 = 10;
+    int32 field11 = 11;
+    string field12 = 12;
+    int32 field13 = 13;
+    string field14 = 14;
+    int32 field15 = 15;
+    string field16 = 16;
+    int32 field17 = 17;
+    string field18 = 18;
+}
+
+message TestReply {
+    HeaderReply field1 = 1;
+    int32 field2 = 2;
+    google.protobuf.Timestamp field3 = 3;
+    string name = 4;
+}

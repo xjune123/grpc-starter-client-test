@@ -1,0 +1,45 @@
+server:
+  port: ${PORT:10003}
+spring:
+  application:
+    name: grpc-client-test
+  zipkin:
+    #内存方式配置，不需要
+    #base-url: http://localhost:9411
+    #日志发送队列类型
+    sender:
+      type: rabbit
+    #发送的队列名称，默认zipkin，正常情况不要修改因为zipkin-server默认监控队列也是zipkin
+    rabbitmq:
+      queue: zipkin
+  sleuth:
+  #统计收集百分比默认0.1，正式环境可不配置
+    sampler:
+      percentage: 1.0
+    enabled: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,env
+  security:
+    enabled: false
+eureka:
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+    metadata-map:
+      tenantID: 1
+      tenantCode: A1
+      version: 2.0
+customtenant:
+  customList:
+    1:
+      tenantCode: A
+      serviceList:
+         GRPC-SERVER-TEST:
+    2:
+      tenantCode: B
+      serviceList:
+        FEIGN-TEST:
